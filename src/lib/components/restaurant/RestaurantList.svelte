@@ -1,21 +1,22 @@
 <script lang="ts">
-	import type { RestaurantInterface } from '../../model/restaurant';
+	import type { RestaurantInterface } from '../../../model/restaurant';
 	import RestaurantSummary from './RestaurantSummary.svelte';
 	import Loading from '../Loading.svelte';
-	import { locationStore } from '../../stores/location';
+	import { locationStore } from '$lib/stores/location';
 	import api from '$lib/axiosInstance';
 
 	let isLoading = true;
 	let restaurants: RestaurantInterface[];
 
-	const fetchRestaurants = async () => {
+	const fetchRestaurants = async (location: string) => {
 		isLoading = true;
-		const { data } = await api.get(`/restaurants?cluster=${$locationStore}`);
+		if (!location.length) return;
+		const { data } = await api.get(`/restaurants?cluster=${location}`);
 		restaurants = data;
 		isLoading = false;
 	};
 
-	$: fetchRestaurants();
+	$: fetchRestaurants($locationStore);
 </script>
 
 <div class="container mx-auto">

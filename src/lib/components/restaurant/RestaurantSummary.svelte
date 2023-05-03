@@ -7,6 +7,7 @@
 	export let category: string;
 	export let summary: string;
 	export let price: string;
+	let isOpen: boolean = false;
 </script>
 
 <label for={id} class="card w-96 bg-base-100 shadow m-5" style="cursor: pointer;">
@@ -21,5 +22,7 @@
 	</div>
 </label>
 
-<input type="checkbox" {id} class="modal-toggle" />
-<RestaurantDetail {id} />
+<input type="checkbox" {id} bind:checked={isOpen} class="modal-toggle" />
+{#if isOpen}
+	<RestaurantDetail {id} />
+{/if}

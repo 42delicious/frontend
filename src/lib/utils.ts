@@ -18,3 +18,6 @@ export const getDistance = (lat1: number, lon1: number, lat2: number, lon2: numb
 
 	return dist;
 };
+
+export const isMobile = () =>
+	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

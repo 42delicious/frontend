@@ -3,14 +3,14 @@ import { getDistance } from '$lib/utils';
 
 export const locationStore: Writable<string> = writable('');
 
-const coords = {
-	seocho: { lat: 37.4921415, lng: 127.0300294 },
-	gaepo: { lat: 37.4881993, lng: 127.0647495 }
+const cluster = {
+	seocho: { latitude: 37.4921415, longitude: 127.0300294 },
+	gaepo: { latitude: 37.4881993, longitude: 127.0647495 }
 };
 
 const compareDistance = (lat: number, lng: number) => {
-	const seocho = getDistance(lat, lng, coords.seocho.lat, coords.seocho.lng);
-	const gaepo = getDistance(lat, lng, coords.gaepo.lat, coords.gaepo.lng);
+	const seocho = getDistance(lat, lng, cluster.seocho.latitude, cluster.seocho.longitude);
+	const gaepo = getDistance(lat, lng, cluster.gaepo.latitude, cluster.gaepo.longitude);
 
 	return seocho < gaepo ? 'seocho' : 'gaepo';
 };

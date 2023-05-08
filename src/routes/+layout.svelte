@@ -22,9 +22,11 @@
 	});
 </script>
 
-{#if isReady}
-	<Header />
-	<div class="grid h-screen" style="place-items: start center;">
-		<slot />
-	</div>
-{/if}
+<div class="bg-base-300">
+  {#if isReady}
+    <Header />
+    <div class="grid h-screen" style="place-items: start center;">
+      <slot />
+    </div>
+  {/if}
+</div>
